@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CNH Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TELA 1: HOME -->
+        <div id="screen-home" class="screen">
+            <header class="app-header transparent-header" style="padding-left: 5px;">
+                <button class="icon-btn"><i class="fas fa-bars"></i></button>
+                <div style="font-size: 1.05rem; font-weight: 700; letter-spacing: 0.5px; margin-left: 5px;">JULIO</div>
+                <div class="flex-spacer"></div>
+                <button class="icon-btn" style="font-size: 1.1rem; margin-right: 10px;"><i class="fas fa-bell"></i></button>
+                <div style="width: 30px; height: 30px; border-radius: 50%; border: 1.2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600;">J</div>
+            </header>
+            <div class="app-content content-home">
+                <div class="menu-card card-green" onclick="navigate('condutor')">
+                    <div class="card-text">
+                        <h2>CONDUTOR</h2>
+                        <p>Gerencie sua habilitação</p>
+                    </div>
+                    <div class="card-icon"><i class="fas fa-id-card-alt"></i></div>
+                </div>
+                <div class="menu-card card-yellow" onclick="showToast('Consulta de veículos e CRLV-e não disponíveis.')">
+                    <div class="card-text"><h2>VEÍCULOS</h2><p>Acesse o CRLV-e, venda digital</p></div>
+                    <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                </div>
+                <div class="menu-card card-blue-dark" onclick="showToast('Nenhuma infração recente.')">
+                    <div class="card-text"><h2>INFRAÇÕES</h2><p>Visualize e pague infrações com até 40% de desconto</p></div>
+                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                </div>
+                <div class="menu-card card-blue-light" onclick="showToast('Plataforma de educação em manutenção.')">
+                    <div class="card-text"><h2>EDUCAÇÃO</h2><p>Conheça nossas campanhas e projetos</p></div>
+                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                </div>
+                
+                <!-- Spacer to push logos to bottom -->
+                <div style="flex: 1; min-height: 20px;"></div>
+                
+                <!-- RODAPÉ GOVERNO -->
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 15px 5px 5px; margin-top: auto;">
+                    <!-- Esquerda: Logo CNH do Brasil -->
+                    <img src="cnh_brasil.png" alt="CNH do Brasil" style="height: 40px; object-fit: contain; margin-left: 10px; mix-blend-mode: multiply;">
+                    
+                    <!-- Centro: Serpro & Ministério dos Transportes -->
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="serpro.jpg" alt="Serpro" style="height: 28px; object-fit: contain; mix-blend-mode: multiply;">
+                        <div style="font-family: 'Roboto', Arial, sans-serif; font-size: 11px; font-weight: 800; color: #111; text-align: center; text-transform: uppercase; line-height: 1.2; letter-spacing: 0.3px;">
+                            Ministério dos<br>Transportes
+                        </div>
+                    </div>
+                    
+                    <!-- Direita: Logo Governo Federal -->
+                    <img src="gov_brasil.png" alt="Governo Federal" style="height: 50px; object-fit: contain; margin-right: 10px; mix-blend-mode: multiply;">
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 2: CONDUTOR -->
+        <div id="screen-condutor" class="screen">
+            <header class="app-header">
+                <button class="icon-btn" onclick="navigate('home')"><i class="fas fa-chevron-left"></i></button>
+                <div class="header-title-container">
+                    <h1 class="header-title">CONDUTOR</h1>
+                </div>
+                <div class="flex-spacer"></div>
+            </header>
+            <div class="app-content bg-light">
+                <div class="info-card">
+                    <h3>Informações do Condutor</h3>
+                    <div class="info-row"><div class="info-col full"><label>Nome</label><span>J**** C**** P****** C*****</span></div></div>
+                    <div class="info-row">
+                        <div class="info-col half"><label>CPF</label><span>***.856.308-**</span></div>
+                        <div class="info-col half"><label>Sexo</label><span>MASCULINO</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-col half"><label>Categoria</label><span>AB</span></div>
+                        <div class="info-col half"><label>UF de Emissão</label><span>SP</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-col half"><label>Data de Validade</label><span>03/07/2027</span></div>
+                        <div class="info-col half"><label>Data de Emissão</label><span>07/02/2026</span></div>
+                    </div>
+                </div>
+
+                <div class="grid-menu">
+                    <div class="grid-item" onclick="navigate('habilitacao')">
+                        <div class="grid-icon"><i class="fas fa-id-badge"></i></div><span>HABILITAÇÃO</span>
+                    </div>
+                    <div class="grid-item" onclick="showToast('Cadastro Positivo não ativado para esta conta.')"><div class="grid-icon"><i class="fas fa-user-check"></i></div><span>CADASTRO POSITIVO</span></div>
+                    <div class="grid-item" onclick="showToast('Nenhum exame toxicológico pendente.')"><div class="grid-icon"><i class="fas fa-vial"></i></div><span>EXAMES TOXICOLÓGICOS</span></div>
+                    <div class="grid-item" onclick="showToast('Você ainda não possui cursos concluídos.')"><div class="grid-icon"><i class="fas fa-user-graduate"></i></div><span>CURSOS ESPECIALIZADOS</span></div>
+                    <div class="grid-item" style="grid-column: 1" onclick="showToast('Credencial não solicitada.')"><div class="grid-icon"><i class="fas fa-parking"></i></div><span>CREDENCIAL DE ESTACIONAMENTO</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 3: CNH NOVO MODELO INTERATIVA -->
+        <div id="screen-habilitacao" class="screen active">
+            <header class="app-header">
+                <button class="icon-btn" onclick="navigate('condutor')"><i class="fas fa-chevron-left"></i></button>
+                <div class="header-title-container">
+                    <h1 class="header-title">HABILITAÇÃO</h1>
+                    <div class="header-subtitle" id="current-datetime">Atualizado em 01/04/2026 - 11:52:30</div>
+                </div>
+                <div class="flex-spacer"></div>
+            </header>
+            
+            <div class="app-content bg-light" style="padding: 0; overflow-x: hidden;">
+                
+                <!-- O Slider da CNH -->
+                <div class="cnh-slider" id="cnh-slider">
+                    
+                    <!-- FRENTE NOVO MODELO (Slide 1) PIXEL PERFECT -->
+                    <div class="cnh-slide">
+                        <div class="cnh-frente">
+                           <!-- Top Black Header (Replaced by User Image) -->
+                           <div style="width:100%; height:40px; position:absolute; top:0; left:0; overflow:hidden;">
+                               <img src="cabecalho.png" style="width:100%; height:100%; object-fit:fill; display:block; mix-blend-mode: multiply;" alt="Cabeçalho">
+                           </div>
+                           
+                           <!-- Subtitle -->
+                           <div style="position:absolute; top:40px; left:0; width:100%; height:18px; border-bottom:1.5px solid #aec2b2; text-align:center; line-height:18px; font-size:9.5px; font-weight:bold; color:#111; font-family:'Arial Narrow', Arial, sans-serif;">CARTEIRA NACIONAL DE HABILITAÇÃO / DRIVER LICENSE / PERMISO DE CONDUCCIÓN</div>
+                           
+                           <!-- Vertical Text -->
+                           <div style="position:absolute; top:58px; left:4px; height:272px; pointer-events:none;">
+                              <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-size:10.5px; font-weight:900; height:100%; text-align:left; font-family:Arial, sans-serif; color:#111; letter-spacing: -0.4px; padding-top: 15px;">
+                                  VÁLIDA EM TODO O TERRITÓRIO NACIONAL
+                              </div>
+                           </div>
+                           <div style="position:absolute; top:58px; left:18px; height:272px; pointer-events:none;">
+                              <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-family:Tahoma, sans-serif; font-size:20px; font-weight:normal; letter-spacing: 2.5px; color:#111; height:100%; text-align:left; padding-top: 25px; transform-origin: center;">
+                                  5033970160
+                              </div>
+                           </div>
+                           
+                           <!-- Mapa do Brasil -->
+                           <img src="mapa.png" style="position:absolute; top:68px; left:14px; width:58px; height:58px; object-fit:contain; mix-blend-mode: multiply;" alt="Mapa do Brasil">
+                           
+                           <!-- Row 1 -->
+                           <fieldset class="abs-box" style="top:63px; left:88px; width:258px; height:28px;">
+                              <legend class="abs-lbl">2 e 1 NOME E SOBRENOME</legend>
+                              <div class="abs-val" style="bottom:1px;">JULIO CESAR PEREIRA COELHO</div>
+                           </fieldset>
+                           <fieldset class="abs-box" style="top:63px; left:351px; width:120px; height:28px;">
+                              <legend class="abs-lbl">1ª HABILITAÇÃO</legend>
+                              <div class="abs-val text-center" style="width:100%; bottom:1px;">07/02/2026</div>
+                           </fieldset>
+                           
+                           <!-- Photo Window -->
+                           <div style="position:absolute; top:98px; left:75px; width:106px; height:136px; background:#fff; overflow:hidden;">
+                              <img src="foto.jpg" style="width:100%; height:100%; object-fit:cover;" alt="Foto">
+                           </div>
+                           
+                           <!-- Row 2 -->
+                           <fieldset class="abs-box" style="top:98px; left:185px; width:285px; height:28px;">
+                              <legend class="abs-lbl">3 DATA, LOCAL E UF DE NASCIMENTO</legend>
+                              <div class="abs-val">06/12/2007, SAO PAULO, SP</div>
+                           </fieldset>
+                           
+                           <!-- Row 3 (Connected Boxes & Isolated D) -->
+                           <fieldset class="abs-box" style="top:133px; left:185px; width:85px; height:28px; border-right:none; border-top-right-radius:0; border-bottom-right-radius:0;">
+                              <legend class="abs-lbl">4<span style="text-transform: lowercase;">a</span> DATA EMISSÃO</legend>
+                              <div class="abs-val text-center" style="width:100%;">07/02/2026</div>
+                           </fieldset>
+                           <fieldset class="abs-box" style="top:133px; left:270px; width:85px; height:28px; border-top-left-radius:0; border-bottom-left-radius:0;">
+                              <legend class="abs-lbl">4<span style="text-transform: lowercase;">b</span> VALIDADE</legend>
+                              <div class="abs-val text-red text-center" style="width:100%;">03/07/2027</div>
+                           </fieldset>
+                           <fieldset class="abs-box" style="top:133px; left:365px; width:45px; height:28px;">
+                              <legend class="abs-lbl text-center" style="width:100%; margin-left:0;">ACC</legend>
+                              <div style="background: repeating-linear-gradient(0deg, #333, #333 1px, #666 1px, #666 2px); height:6px; position:absolute; bottom:5px; left:5px; right:5px;"></div>
+                           </fieldset>
+                           <div style="position:absolute; top:134px; left:421px; font-size:26px; font-weight:bold; color:#111; font-family:'Times New Roman', Times, serif;">D</div>
+                           
+                           <!-- Row 4 -->
+                           <fieldset class="abs-box" style="top:168px; left:185px; width:285px; height:28px;">
+                              <legend class="abs-lbl">4<span style="text-transform: lowercase;">c</span> DOC IDENTIDADE / ÓRG EMISSOR / UF</legend>
+                              <div class="abs-val">33886961 SSP SP</div>
+                           </fieldset>
+                           
+                           <!-- Row 5 (Connected Boxes) -->
+                           <fieldset class="abs-box" style="top:203px; left:185px; width:100px; height:28px; border-right:none; border-top-right-radius:0; border-bottom-right-radius:0;">
+                              <legend class="abs-lbl">4<span style="text-transform: lowercase;">d</span> CPF</legend>
+                              <div class="abs-val">530.856.308-05</div>
+                           </fieldset>
+                           <fieldset class="abs-box" style="top:203px; left:285px; width:100px; height:28px; border-top-left-radius:0; border-bottom-left-radius:0;">
+                              <legend class="abs-lbl">5 Nº REGISTRO</legend>
+                              <div class="abs-val text-red text-center" style="width:100%;">87549296785</div>
+                           </fieldset>
+                           <fieldset class="abs-box" style="top:203px; left:395px; width:75px; height:28px;">
+                              <legend class="abs-lbl">9 CAT HAB</legend>
+                              <div class="abs-val text-red">AB</div>
+                           </fieldset>
+                           
+                           <!-- Signature Overlap -->
+                           <div style="position:absolute; top:238px; left:75px; width:106px; height:46px; background:#fff; display:flex; justify-content:center; align-items:center; overflow:hidden;">
+                               <img src="assinatura.jpg" style="width:110%; height:110%; object-fit:contain; transform: scale(1.4); transform-origin: center center;">
+                           </div>
+                           <div style="position:absolute; top:284px; left:75px; width:106px; border-top:1.5px solid #1c452b; font-size:6.5px; font-weight:bold; font-family:Arial, sans-serif; text-align:left; color:#1c452b; padding-top:2.5px; white-space:nowrap;">7 &nbsp;ASSINATURA DO PORTADOR</div>
+                           
+                           <!-- Row 6 -->
+                           <fieldset class="abs-box" style="top:238px; left:185px; width:285px; height:28px;">
+                              <legend class="abs-lbl">NACIONALIDADE</legend>
+                              <div class="abs-val">BRASILEIRO(A)</div>
+                           </fieldset>
+                           
+                           <!-- Row 7 (Filiacao) -->
+                           <fieldset class="abs-box" style="top:273px; left:185px; width:285px; height:50px; border-bottom: 1.5px solid #1c452b;">
+                              <legend class="abs-lbl">FILIAÇÃO</legend>
+                              <div class="abs-val" style="top: 5px; bottom: auto;">MARIA ALDENISA PEREIRA COELHO</div>
+                              <div class="abs-val" style="top: 24px; bottom: auto;">WAGNER LINO COELHO</div>
+                           </fieldset>
+                           
+                        </div>
+                    </div>
+                    
+                    <!-- VERSO NOVO MODELO (Slide 2) -->
+                    <div class="cnh-slide">
+                        <div class="novo-cnh-wrapper-verso">
+
+                            <!-- Strip vertical do número serial (borda esquerda no landscape) -->
+                            <div class="nm-serial-strip">
+                                <div class="nm-serial-text">5033970160</div>
+                            </div>
+
+                            <!-- TABELA DE CATEGORIAS LADO A LADO -->
+                            <div class="nm-tables-container">
+                                <!-- LEFT TABLE -->
+                                <div class="nm-table-col">
+                                    <div class="nm-table-header">
+                                        <div class="nm-th-9">9</div><div class="nm-th-10">10</div><div class="nm-th-11">11</div><div class="nm-th-12">12</div>
+                                    </div>
+                                    <table class="nm-table-split">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 38%;"><div class="cat-cell"><div class="cat-label">ACC</div><div class="cat-icon"><i class="fas fa-motorcycle"></i></div></div></td>
+                                                <td style="width: 22%;"></td>
+                                                <td style="width: 20%;"></td>
+                                                <td style="width: 20%;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">A</div><div class="cat-icon"><i class="fas fa-motorcycle"></i></div></div></td>
+                                                <td></td>
+                                                <td>03/07/2027</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">A1</div><div class="cat-icon"><i class="fas fa-motorcycle"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">B</div><div class="cat-icon"><i class="fas fa-car-side"></i></div></div></td>
+                                                <td></td>
+                                                <td>03/07/2027</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">B1</div><div class="cat-icon"><i class="fas fa-truck-pickup"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">C</div><div class="cat-icon"><i class="fas fa-truck"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">C1</div><div class="cat-icon"><i class="fas fa-truck"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- RIGHT TABLE -->
+                                <div class="nm-table-col">
+                                    <div class="nm-table-header">
+                                        <div class="nm-th-9">9</div><div class="nm-th-10">10</div><div class="nm-th-11">11</div><div class="nm-th-12">12</div>
+                                    </div>
+                                    <table class="nm-table-split">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 38%;"><div class="cat-cell"><div class="cat-label">D</div><div class="cat-icon"><i class="fas fa-bus"></i></div></div></td>
+                                                <td style="width: 22%;"></td>
+                                                <td style="width: 20%;"></td>
+                                                <td style="width: 20%;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">D1</div><div class="cat-icon"><i class="fas fa-shuttle-van"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">BE</div><div class="cat-icon"><i class="fas fa-car-side" style="margin-right:2px;"></i><i class="fas fa-trailer" style="font-size:7px;"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">CE</div><div class="cat-icon"><i class="fas fa-truck-moving"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">C1E</div><div class="cat-icon"><i class="fas fa-truck" style="margin-right:2px;"></i><i class="fas fa-trailer" style="font-size:7px;"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">DE</div><div class="cat-icon"><i class="fas fa-bus-alt"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div class="cat-cell"><div class="cat-label">D1E</div><div class="cat-icon"><i class="fas fa-bus-alt" style="margin-right:2px;"></i><i class="fas fa-trailer" style="font-size:7px;"></i></div></div></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- MEIO: OBSERVAÇÕES + ASSINADO LADO A LADO -->
+                            <div class="nm-middle-row">
+                                <fieldset class="nm-obs-fieldset">
+                                    <legend class="nm-obs-legend">12 OBSERVAÇÕES</legend>
+                                </fieldset>
+                                <div class="nm-ass-dig">
+                                    <div class="nm-ass-line">ASSINADO DIGITALMENTE</div>
+                                    <div class="nm-ass-line">DEPARTAMENTO ESTADUAL DE TRÂNSITO</div>
+                                    <div class="nm-ass-line">84026155840</div>
+                                    <div class="nm-ass-line">SP031342029</div>
+                                </div>
+                            </div>
+
+                            <!-- RODAPÉ: LOCAL + SÃO PAULO -->
+                            <div class="nm-footer-row">
+                                <fieldset class="nm-local-fieldset">
+                                    <legend class="nm-local-legend">LOCAL</legend>
+                                    <div class="nm-local-val">SAO PAULO, SP</div>
+                                </fieldset>
+                                <div class="nm-sp-big">SÃO PAULO</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- MRZ LEGEND (Slide 3) -->
+                    <div class="cnh-slide">
+                        <div class="nm-mrz-wrapper" style="background:linear-gradient(to right, #ecf4e4 0%, #f6fbf0 40%, #ecf4e4 100%); padding:20px; display:flex; flex-direction:column; justify-content:space-between; height: 330px; box-sizing: border-box;">
+                            <div class="nm-legend" style="font-family: Arial, sans-serif; font-size: 6.5px; color: #111; text-align: justify; line-height: 1.3; margin-top:20px;">
+                                2 e 1. Nome e Sobrenome / Name and Surname / Nombre y Apellidos - Primeira Habilitação / First Driver License / Primera Licencia de Conducir - 3. Data e Local de Nascimento / Date and Place of Birth DD/MM/YYYY / Fecha y Lugar de Nacimiento - 4a. Data de Emissão / Issuing Date DD/MM/YYYY / Fecha de Emisión - 4b. Data de Validade / Expiration Date DD/MM/YYYY / Valido Hasta - ACC - 4c. Documento Identidade - Órgão emissor / Identity Document - Issuing Authority / Documento de Identificación - Autoridad Expedidora - 4d. CPF - 5. Número de registro da CNH / Driver License Number / Número de Permiso de Conducir - 9. Categoria de Veículos da Carteira de Habilitação / Driver license Class / Categoria de Permisos de Conducir - Nacionalidade / Nationality / Nacionalidad - Filiação / Filiation / Filiación - 12. Observações / Observations / Observaciones - Local / Place / Lugar
+                            </div>
+                            <div class="nm-mrz-code" style="font-family: 'Courier New', Courier, monospace; font-size: 18px; font-weight: normal; color: #111; text-align: center; letter-spacing: 2px; line-height: 1.6; margin-bottom: 20px;">
+                                I&lt;BRA075112594&lt;460&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
+                                8312192F3507038BRA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;6<br>
+                                JULIO&lt;&lt;CESAR&lt;PEREIRA&lt;COELHO&lt;&lt;&lt;
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR CODE (Slide 4) -->
+                    <div class="cnh-slide">
+                        <div class="qr-container" style="justify-content: center; align-items: center; display: flex;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=CNHDigitalNovoModeloValid" alt="QR Code" style="width: 250px; height: 250px; margin: 0;" />
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- OS 4 PONTINHOS DO APP -->
+                <div class="pagination-dots" id="cnh-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <!-- OS BOTÕES EM LISTA -->
+                <div class="action-buttons-list">
+                    <button class="list-btn" onclick="showToast('Nenhum histórico de emissões encontrado na base.')"><i class="fas fa-id-card-alt"></i> Histórico de emissões da CNH</button>
+                    <button class="list-btn" onclick="showToast('Documento exportado com sucesso!', true)"><i class="fas fa-file-export"></i> Exportar</button>
+                    <button class="list-btn" onclick="showToast('Remoção desativada por segurança.')"><i class="fas fa-trash-alt"></i> Remover</button>
+                    <button class="list-btn" onclick="copyQR()"><i class="far fa-copy"></i> Copiar QR Code</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Componente Toast -->
+    <div id="toast" class="toast">Mensagem de alerta</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

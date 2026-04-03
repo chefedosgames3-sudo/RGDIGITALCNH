@@ -1,0 +1,275 @@
+/* CSS Específico para recriação 100% CNH */
+.cnh-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+.cnh-slider::-webkit-scrollbar { display: none; }
+
+.cnh-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* BASE CNH */
+.cnh-real-front, .cnh-real-verso {
+    background-color: #ebecd0; /* cor de fundo CNH real */
+    border: 2px solid #8cc29f; /* verde clarinho das bordas gerais */
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* HEADER CNH */
+.cnh-black-header {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.cnh-header-texts {
+    flex: 1;
+    text-align: center;
+}
+.cnh-rep { font-size: 0.5rem; font-weight: bold; color: #f1ebd0; letter-spacing: 0.5px; }
+.cnh-min, .cnh-sec { font-size: 0.35rem; color: #fff; line-height: 1.1; }
+.cnh-coat-arms { width: 30px; }
+.cnh-br-logo { width: 35px; text-align: center; }
+.cnh-br-logo div {
+    display: inline-block;
+    border: 1px solid #c2b280;
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    line-height: 28px;
+    color: #c2b280;
+    font-weight: bold;
+    font-size: 0.8rem;
+    background: repeating-linear-gradient(45deg, rgba(194,178,128,0.2) 0, rgba(194,178,128,0.2) 2px, transparent 2px, transparent 4px);
+}
+
+/* Titulo / Subtitulo CNH */
+.cnh-title-row {
+    text-align: center;
+    font-size: 0.45rem;
+    font-weight: bold;
+    padding: 4px 0;
+    border-bottom: 2px solid #8cc29f;
+}
+
+/* CORPO FRENTE */
+.cnh-front-body {
+    display: flex;
+    position: relative;
+    padding: 0 5px 5px 0;
+}
+.cnh-left-margin {
+    width: 25px;
+    position: relative;
+}
+.cnh-left-margin .margin-text {
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    top: 250px;
+    left: 20px;
+    white-space: nowrap;
+    font-size: 0.4rem;
+    font-weight: bold;
+}
+.cnh-left-margin .margin-num {
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    top: 250px;
+    left: 8px;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}
+
+/* FOTO E ASSINATURA */
+.cnh-photo-col {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    position: relative;
+}
+.map-bg {
+    position: absolute;
+    width: 50px; height: 50px;
+    background: #d4a32a;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M39 187c... '/%3E%3C/svg%3E") no-repeat center;
+    /* Para simplificar, só cor pra simular mapa do BR */
+    background: radial-gradient(circle, #e2c050 30%, transparent 70%);
+    top: 5px; left: 5px; opacity: 0.8;
+}
+.cnh-photo-img {
+    width: 90px;
+    height: 120px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 4px;
+    border-top-right-radius: 30px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #abcbaa;
+}
+.cnh-sig-text {
+    font-family: 'Brush Script MT', cursive, sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 10px 0 2px;
+    line-height: 0.8;
+}
+
+/* FORM FIELDS (DIREITA E VERSO) */
+.cnh-data-col { flex: 1; padding: 5px 0; }
+.cnh-form-row { display: flex; border-bottom: 1px solid #578a62; }
+.cnh-form-row.filiacao-row { border-bottom: none; }
+.cnh-input-box {
+    padding: 2px 4px;
+    border-right: 1px solid #578a62;
+    position: relative;
+    display: flex; flex-direction: column; justify-content: center;
+    min-height: 24px;
+}
+.cnh-input-box.no-right-border { border-right: none; }
+.cnh-input-box.no-bottom-border { border-bottom: none; }
+
+.cnh-label {
+    font-size: 0.35rem;
+    color: #4a6c52;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+.cnh-val {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Roboto", Arial, sans-serif;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cnh-val.text-red { color: #d32f2f; }
+.text-center { text-align: center; }
+
+/* Tamanhos de coluna */
+.field-75 { width: 75%; } .field-25 { width: 25%; }
+.field-30 { width: 30%; } .field-40 { width: 40%; }
+.field-35 { width: 35%; }
+.w-100 { width: 100%; }
+
+.cnh-cat-large {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* VERSO SECTION */
+.cnh-verso-content { display: flex; padding-top: 10px; }
+.cnh-verso-main { flex: 1; padding: 0 5px 5px 0; }
+.cnh-table { margin-bottom: 15px; border: 1px solid #578a62; background: #fff;}
+.cnh-table table { width: 100%; border-collapse: collapse; font-size: 0.4rem; text-align: center; }
+.cnh-table th { background: #dce4d3; border-bottom: 1px solid #578a62; padding: 2px; }
+.cnh-table td { border: 1px solid #578a62; padding: 2px; height: 16px; }
+
+.cnh-obs-box {
+    border: 1px solid #578a62;
+    height: 70px;
+    padding: 2px 4px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+.cnh-verso-footer { display: flex; }
+.cnh-local { width: 40%; border: 1px solid #578a62; padding: 4px; position:relative; background: #fff;}
+.cnh-local .cnh-large-estado {
+    text-align: center; font-size: 1rem; font-weight: bold; margin-top: 15px; letter-spacing: 1px; color:#1a1a1a;
+}
+
+.cnh-assinatura-dig {
+    width: 60%;
+    padding-left: 10px;
+    text-align: center;
+    display: flex; flex-direction: column; justify-content: flex-end;
+}
+.cnh-assinatura-dig div {
+    font-size: 0.35rem; font-weight: bold;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 2px; margin-bottom: 4px;
+}
+
+/* BLOCO INFERIOR MRZ (Abaixo do Verso) */
+.cnh-mrz-block {
+    width: 100%;
+    max-width: 380px;
+    background-color: #ebecd0;
+    padding: 10px;
+    margin-top: 10px;
+}
+.cnh-legend {
+    font-size: 0.38rem;
+    color: #444;
+    text-align: justify;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+.cnh-mrz-code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* TELA QR CODE */
+.cnh-qr-page {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.qr-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.qr-code-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.qr-disclaimer {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 20px;
+}
+.qr-disclaimer a { color: #0c1a45; word-wrap: break-word; }
+.qr-logos {
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 900;
+}
+.serpro { color: #0056a3; }
+.senatran { color: #000; }
