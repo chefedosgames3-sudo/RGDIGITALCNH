@@ -14,7 +14,7 @@
         <!-- TELA 1: HOME -->
         <div id="screen-home" class="screen active">
             <header class="app-header transparent-header" style="padding-left: 5px;">
-                <button class="icon-btn"><i class="fas fa-bars"></i></button>
+                <button class="icon-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
                 <div style="font-size: 1.05rem; font-weight: 700; letter-spacing: 0.5px; margin-left: 5px;">JULIO</div>
                 <div class="flex-spacer"></div>
                 <button class="icon-btn" style="font-size: 1.1rem; margin-right: 10px;"><i class="fas fa-bell"></i></button>
@@ -22,23 +22,38 @@
             </header>
             <div class="app-content content-home">
                 <div class="menu-card card-green" onclick="navigate('condutor')">
-                    <div class="card-text">
+                    <div class="card-text text-light">
                         <h2>CONDUTOR</h2>
-                        <p>Gerencie sua habilitação</p>
+                        <p>Gerencie sua<br><b>habilitação</b></p>
                     </div>
-                    <div class="card-icon"><i class="fas fa-id-card-alt"></i></div>
+                    <div class="card-icon custom-shadow composite-icon">
+                        <i class="fas fa-car-side car-condutor"></i>
+                        <i class="fas fa-user user-condutor"></i>
+                    </div>
                 </div>
-                <div class="menu-card card-yellow" onclick="showToast('Consulta de veículos e CRLV-e não disponíveis.')">
-                    <div class="card-text"><h2>VEÍCULOS</h2><p>Acesse o CRLV-e, venda digital</p></div>
-                    <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                <div class="menu-card card-yellow" onclick="navigate('veiculos')">
+                    <div class="card-text text-dark">
+                        <h2>VEÍCULOS</h2>
+                        <p>Acesso ao <b>CRLV-e</b>,<br>venda digital</p>
+                    </div>
+                    <div class="card-icon custom-shadow"><i class="fas fa-car" style="font-size: 2.2rem;"></i></div>
                 </div>
-                <div class="menu-card card-blue-dark" onclick="showToast('Nenhuma infração recente.')">
-                    <div class="card-text"><h2>INFRAÇÕES</h2><p>Visualize e pague infrações com até 40% de desconto</p></div>
-                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <div class="menu-card card-blue-dark" onclick="navigate('infracoes')">
+                    <div class="card-text text-light">
+                        <h2>INFRAÇÕES</h2>
+                        <p>Visualize e pague infrações<br>com até <b>40% de desconto</b></p>
+                    </div>
+                    <div class="card-icon custom-shadow composite-icon">
+                        <i class="fas fa-car-side car-infracao"></i>
+                        <i class="fas fa-user-secret cop-infracao"></i>
+                    </div>
                 </div>
                 <div class="menu-card card-blue-light" onclick="showToast('Plataforma de educação em manutenção.')">
-                    <div class="card-text"><h2>EDUCAÇÃO</h2><p>Conheça nossas campanhas e projetos</p></div>
-                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="card-text text-dark">
+                        <h2>EDUCAÇÃO</h2>
+                        <p>Conheça nossa<br><b>plataforma de cursos</b></p>
+                    </div>
+                    <div class="card-icon custom-shadow"><i class="fas fa-chalkboard-teacher" style="font-size: 2.2rem;"></i></div>
                 </div>
                 
                 <!-- Spacer to push logos to bottom -->
@@ -47,7 +62,7 @@
                 <!-- RODAPÉ GOVERNO -->
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 15px 5px 5px; margin-top: auto;">
                     <!-- Esquerda: Logo CNH do Brasil -->
-                    <img src="cnh_brasil.png" alt="CNH do Brasil" style="height: 40px; object-fit: contain; margin-left: 10px; mix-blend-mode: multiply;">
+                    <img src="cnh_brasil.png" alt="CNH do Brasil" style="height: 60px; object-fit: contain; margin-left: 10px; mix-blend-mode: multiply;">
                     
                     <!-- Centro: Serpro & Ministério dos Transportes -->
                     <div style="display: flex; align-items: center; gap: 10px;">
@@ -178,7 +193,7 @@
                               <legend class="abs-lbl text-center" style="width:100%; margin-left:0;">ACC</legend>
                               <div style="background: repeating-linear-gradient(0deg, #333, #333 1px, #666 1px, #666 2px); height:6px; position:absolute; bottom:5px; left:5px; right:5px;"></div>
                            </fieldset>
-                           <div style="position:absolute; top:134px; left:421px; font-size:26px; font-weight:bold; color:#111; font-family:'Times New Roman', Times, serif;">D</div>
+                           <div style="position:absolute; top:134px; left:421px; font-size:26px; font-weight:bold; color:#111; font-family:'Times New Roman', Times, serif;">P</div>
                            
                            <!-- Row 4 -->
                            <fieldset class="abs-box" style="top:168px; left:185px; width:285px; height:28px;">
@@ -382,7 +397,7 @@
                     <!-- QR CODE (Slide 4) -->
                     <div class="cnh-slide">
                         <div class="qr-container" style="justify-content: center; align-items: center; display: flex;">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=CNHDigitalNovoModeloValid" alt="QR Code" style="width: 250px; height: 250px; margin: 0;" />
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://www.gov.br" alt="QR Code" style="width: 330px; height: 330px; margin: 0;" />
                         </div>
                     </div>
                 </div>
@@ -405,6 +420,95 @@
 
             </div>
         </div>
+
+        <!-- TELA 4: VEÍCULOS -->
+        <div id="screen-veiculos" class="screen">
+            <header class="app-header">
+                <button class="icon-btn circle-btn" onclick="navigate('home')"><i class="fas fa-chevron-left"></i></button>
+                <div class="header-title-container">
+                    <h1 class="header-title" style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px;">VEÍCULOS</h1>
+                </div>
+            </header>
+            <div class="app-content bg-light" style="display: flex; flex-direction: column; align-items: center; padding-top: 25px;">
+                <div class="veiculos-card">
+                    <img src="cnh_brasil.png" alt="CNH do Brasil" class="veiculos-logo">
+                    <p>Para visualizar seu(s) veículo(s) é<br>necessário adicionar dados de um CRLV<br>ou possuir CNH-e</p>
+                    <p>Informe os dados necessários e seu(s)<br>veículo(s) serão exibidos.</p>
+                    <p>Para receber uma intenção de venda<br>não é necessário possuir veículo.</p>
+                    <button class="btn-primary-blue" onclick="showToast('Funcionalidade não disponível no momento.')"><i class="fas fa-plus"></i> TOQUE AQUI PARA ADICIONAR UM CRLV</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 5: INFRAÇÕES -->
+        <div id="screen-infracoes" class="screen">
+            <header class="app-header">
+                <button class="icon-btn circle-btn" onclick="navigate('home')"><i class="fas fa-chevron-left"></i></button>
+                <div class="header-title-container">
+                    <h1 class="header-title" style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px;">INFRAÇÕES</h1>
+                </div>
+            </header>
+            <div class="app-content bg-light" style="padding: 30px 0 0 0;">
+                <div class="list-item" onclick="showToast('Consulta por Infrator indisponível.')">
+                    <i class="fas fa-address-card list-icon text-blue"></i>
+                    <span class="list-text">Por Infrator</span>
+                    <i class="fas fa-chevron-right list-arrow"></i>
+                </div>
+                <div class="list-divider"></div>
+                <div class="list-item" onclick="showToast('Consulta por Veículo indisponível.')">
+                    <i class="fas fa-car list-icon text-blue"></i>
+                    <span class="list-text">Por Veículo</span>
+                    <i class="fas fa-chevron-right list-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+    <!-- DRAWER MENU -->
+    <div id="side-menu-overlay" class="side-menu-overlay" onclick="toggleMenu()"></div>
+    <div id="side-menu" class="side-menu">
+        <div class="side-menu-header">
+            <img src="cnh_brasil.png" alt="CNH do Brasil" class="side-menu-logo">
+            <div class="side-menu-user">J**** C**** P****** C*****</div>
+            <div class="side-menu-cpf">***.856.308-**</div>
+        </div>
+        
+        <div class="side-menu-list">
+            <div class="side-menu-divider" style="margin-top: 0;"></div>
+            <div class="side-menu-item" onclick="showToast('Central de Mensagens')">
+                <i class="fas fa-envelope"></i><span>Central de Mensagens</span>
+            </div>
+            <div class="side-menu-item" onclick="showToast('Política de Privacidade')">
+                <i class="fas fa-user-secret"></i><span>Política de Privacidade</span>
+            </div>
+            <div class="side-menu-item" onclick="showToast('Termo de Responsabilidade')">
+                <i class="fas fa-mobile-alt"></i><span>Termo de Responsabilidade</span>
+            </div>
+            <div class="side-menu-item" onclick="showToast('Avaliar')">
+                <i class="fas fa-grin-stars"></i><span>Avaliar</span>
+            </div>
+            
+            <div class="side-menu-divider"></div>
+            
+            <div class="side-menu-item" onclick="showToast('Preferências')">
+                <i class="fas fa-cog"></i><span>Preferências</span>
+            </div>
+            <div class="side-menu-item" onclick="showToast('Tutorial')">
+                <i class="fas fa-book-open"></i><span>Tutorial</span>
+            </div>
+            <div class="side-menu-item" onclick="showToast('Assistente Virtual')">
+                <i class="fas fa-question-circle"></i><span>Assistente Virtual</span>
+            </div>
+            <div class="side-menu-item" onclick="showToast('Sobre a CNH do Brasil')">
+                <i class="fas fa-info-circle"></i><span>Sobre a CNH do Brasil</span>
+            </div>
+            
+            <div class="side-menu-divider"></div>
+            
+            <div class="side-menu-item" onclick="showToast('Saindo da conta...')">
+                <i class="fas fa-sign-out-alt"></i><span>Sair da Conta</span>
+            </div>
+        </div>
+    </div>
 
     </div>
     

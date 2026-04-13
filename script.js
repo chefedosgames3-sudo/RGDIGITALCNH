@@ -62,3 +62,16 @@ function showToast(message, isSuccess = false) {
 function copyQR() {
     showToast('QR Code copiado para a área de transferência!', true);
 }
+
+// Menu Lateral Toggle
+function toggleMenu() {
+    const overlay = document.getElementById('side-menu-overlay');
+    const menu = document.getElementById('side-menu');
+    if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+    } else {
+        menu.classList.add('active');
+        overlay.classList.add('active');
+    }
+}
